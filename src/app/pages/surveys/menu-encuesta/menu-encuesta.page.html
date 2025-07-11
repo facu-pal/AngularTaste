@@ -1,0 +1,49 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="header-title">Encuesta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-menu contentId="main-content" side="start">
+  <ion-header class="custom-header">
+    <ion-toolbar>
+      <ion-title class="header-title">Opciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list lines="none">
+      <ion-item button (click)="navigateTo('home')">
+        <ion-icon slot="start" name="home-outline"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-item>
+      <ion-item button (click)="abrirConsulta()">
+        <ion-icon slot="start" name="chatbubbles-outline"></ion-icon>
+        <ion-label>Consultas</ion-label>
+      </ion-item>
+      <ion-item button (click)="cerrarSesion()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content" [fullscreen]="true">
+  <div class="container">
+    <!-- Botones principales -->
+    <div class="action-buttons">
+      <ion-button expand="block" class="action-button" (click)="completarEncuesta()">
+        <ion-icon slot="start" name="document-text-outline"></ion-icon>
+        Completar encuesta
+      </ion-button>
+
+      <ion-button expand="block" class="action-button" (click)="verEncuesta()">
+        <ion-icon slot="start" name="eye-outline"></ion-icon>
+        Ver encuesta
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

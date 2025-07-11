@@ -1,0 +1,40 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-title class="header-title">Consultas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="cerrar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="chat-content" [scrollEvents]="true" (ionScroll)="onScroll($event)">
+  <!-- Contenedor de mensajes -->
+  <div class="messages-container" [class.keyboard-active]="keyboardActive">
+    <div *ngFor="let msg of mensajes" 
+         class="chat-message"
+         [class.mi-mensaje]="esMiMensaje(msg.uid)"
+         [class.otro-mensaje]="!esMiMensaje(msg.uid)">
+      <div class="chat-header">
+        <ng-container *ngIf="msg.rol === 'cliente'">
+          Mesa {{ msg.idMesa ?? 0 }} - {{ formatearFecha(msg.fecha) }}
+        </ng-container>
+        <ng-container *ngIf="msg.rol === 'mozo'">
+          Mozo ({{ msg.nombre }}) - {{ formatearFecha(msg.fecha) }}
+        </ng-container>
+      </div>
+      <div class="chat-body">{{ msg.mensaje }}</div>
+    </div>
+  </div>
+
+  <!-- Input de mensaje -->
+  <div class="chat-input" [class.keyboard-active]="keyboardActive">
+    <input [(ngModel)]="nuevoMensaje"
+           placeholder="Escriba un mensaje..."
+           (keyup.enter)="enviar()"
+           (focus)="scrollToBottom()"/>
+    <ion-button (click)="enviar()" [disabled]="!nuevoMensaje?.trim()">
+      <ion-icon name="send" slot="start"></ion-icon>
+      Enviar
+    </ion-button>
+  </div>
+</ion-content>

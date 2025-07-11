@@ -1,0 +1,7 @@
+{
+  "name": "AngularTaste-2025",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

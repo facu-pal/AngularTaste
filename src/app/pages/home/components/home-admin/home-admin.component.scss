@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  height: 100vh;
+  padding-top: calc(env(safe-area-inset-top) + 25px);
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 16px;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-grande {
+  flex-grow: 3;
+  font-size: 1.5rem;
+  --background: #1d2f41 !important;
+  --color: #ffffff;
+  
+  .button-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  ion-icon {
+    font-size: 18rem; /* Icono extra grande */
+    margin-bottom: 16px;
+    color: #ffffff;
+  }
+}
+
+.btn-chico {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  --background: #1d2f41 !important;
+  --color: #ffffff;
+  
+  ion-icon {
+    font-size: 2.8rem;
+    margin-right: 8px;
+    color: #ffffff;
+  }
+}

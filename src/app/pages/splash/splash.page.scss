@@ -1,0 +1,240 @@
+
+/* Estructura principal */
+.splash-content {
+  --background: none;
+  background: url('../../../assets/splash/background.png') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor centrado */
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Caja de contenido */
+.content-box {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  /* Animación de salida */
+  &.animate-out {
+    .logo {
+      animation: shrinkToCenter var(--animation-duration) cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    }
+    
+    .creator-name:nth-of-type(1) {
+      animation: moveLeft var(--animation-duration) forwards;
+    }
+    
+    .creator-name:nth-of-type(2) {
+      animation: moveRight var(--animation-duration) forwards;
+    }
+    
+    .creator-name:nth-of-type(3) {
+      animation: moveDown var(--animation-duration) forwards;
+    }
+  }
+
+&.reset-animation {
+  .logo {
+    animation: 
+      smoothRise 0.8s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+  }
+  .creator-name:nth-of-type(1) {
+    animation: 
+      smoothRise 0.8s cubic-bezier(0.2, 0.8, 0.4, 1) 0.3s forwards;
+  }
+  .creator-name:nth-of-type(2) {
+    animation: 
+      smoothRise 0.8s cubic-bezier(0.2, 0.8, 0.4, 1) 0.6s forwards;
+  }
+  .creator-name:nth-of-type(3) {
+    animation: 
+      smoothRise 0.8s cubic-bezier(0.2, 0.8, 0.4, 1) 0.9s forwards;
+  }
+}
+
+/* Reset de la animacion */
+&.reset-animation {
+  .logo {
+    animation: 
+      growFromCenter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards;
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  .creator-name:nth-of-type(1) {
+    animation: 
+      returnFromLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+  
+  .creator-name:nth-of-type(2) {
+    animation: 
+      returnFromRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+    opacity: 0;
+    transform: translateX(100vw);
+  }
+  
+  .creator-name:nth-of-type(3) {
+    animation: 
+      returnFromBottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0s forwards;
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
+
+/* Nuevas animaciones inversas */
+@keyframes growFromCenter {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes returnFromLeft {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes returnFromRight {
+  0% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes returnFromBottom {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+}
+
+/* Logo */
+.logo {
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 8%;
+  background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 50px rgb(0, 0, 0); /* Sombra difuminada blanca */
+  flex-shrink: 0;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Nombres */
+.creator-name {    
+  font-weight: 300 ;  
+  font-size: 2.3rem;
+  color: #FFFFFF;
+  margin: 15px 0;
+  opacity: 1;
+  flex-shrink: 0;
+  padding: 10px 0;
+  transform: translateY(0);
+   text-shadow: 
+    2px 2px 4px rgba(0, 0, 0), /* Sombra principal */
+}
+
+/* Animaciones */
+@keyframes shrinkToCenter {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes moveLeft {
+  to { transform: translateX(-100vw); opacity: 0; }
+}
+
+@keyframes moveRight {
+  to { transform: translateX(100vw); opacity: 0; }
+}
+
+@keyframes moveDown {
+  to { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-height: 600px) {
+  .logo {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .creator-name {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 350px) {
+  .content-box {
+    max-width: 90%;
+  }
+  
+  .creator-name {
+    font-size: 1.3rem;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 150px;
+  }
+}

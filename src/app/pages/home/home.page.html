@@ -1,0 +1,9 @@
+<ng-container *ngIf="userRole as rol">
+  <app-home-cliente *ngIf="rol === 'cliente'"></app-home-cliente>
+  <app-home-mozo *ngIf="rol === 'mozo'"></app-home-mozo>
+  <app-home-maitre *ngIf="rol === 'maitre'"></app-home-maitre>
+  <app-home-cocinero-bartender *ngIf="rol === 'cocinero' || rol === 'bartender'"></app-home-cocinero-bartender>
+  <app-home-admin *ngIf="rol === 'dueño'|| rol === 'supervisor'" ></app-home-admin>
+</ng-container>
+
+<p *ngIf="!userRole">Cargando vista del usuario...</p>

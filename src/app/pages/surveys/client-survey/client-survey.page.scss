@@ -1,0 +1,108 @@
+/* Header Styles */
+ion-header {
+  ion-toolbar {
+    --background: #1d2f41;
+    --color: white;
+
+    ion-back-button {
+      --color: white;
+      --background-hover: transparent;
+    }
+
+    ion-title {
+      font-weight: bold;
+      color: white;
+    }
+  }
+}
+
+/* Main Content */
+.container {
+  padding: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+ion-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Controls */
+.control {
+  margin-bottom: 10px;
+
+  .label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 2px;
+    color: #ffffff;
+  }
+}
+
+/* Buttons */
+ion-button {
+  --background: #1d2f41;
+  --background-activated: #2d3f51;
+  --background-hover: #2d3f51;
+  --color: white;
+  --border-radius: 8px;
+  margin-top: 15px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 1.6rem;
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+/* Photo Preview */
+.foto-reducida {
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Form Elements */
+ion-textarea {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  background: white;
+  color: #000;
+}
+
+ion-radio-group {
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --border-width: 0;
+
+    ion-label {
+      margin-left: 8px;
+    }
+  }
+}
+
+ion-checkbox {
+  --size: 30px;
+  --checkbox-background-checked: #1d2f41;
+  --border-color-checked: #1d2f41;
+}
+
+/* Range Slider */
+ion-range {
+  --bar-background: #e0e0e0;
+  --bar-background-active: #1d2f41;
+  --knob-background: #1d2f41;
+  --pin-background: #1d2f41;
+  --pin-color: white;
+}
+
+ion-label {
+  color: #ffffff;
+ font-size: 1.4rem !important;
+}

@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>   
+     <ion-buttons slot="start" style="padding-top: 20px;">
+      <ion-back-button defaultHref="/menu-principal"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo-centrado" style="padding-top: 20px;">Encuesta de Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container background-pri">
+    <ion-card style="width: 95%;">
+      <ion-card-content>
+        <form [formGroup]="formularioEncuesta" (ngSubmit)="sendSurvey()">
+          <!-- Comentarios -->
+          <div class="control">
+            <div class="label">
+              <ion-label>Comentarios</ion-label>
+            </div>
+            <div class="input">
+              <ion-textarea
+                formControlName="comentarios"
+                maxlength="255"
+                autoGrow="true"
+                placeholder="Escriba aquí...">
+              </ion-textarea>
+            </div>
+          </div>
+
+          <!-- Calidad de la Comida (Range) -->
+          <div class="control">
+            <div class="label">
+              <ion-label>Calidad de la Comida</ion-label>
+            </div>
+            <div class="input">
+              <ion-range
+                min="1"
+                max="10"
+                step="1"
+                pin="true"
+                snaps="true"
+                ticks="true"
+                formControlName="comida">
+                <ion-label slot="start">1</ion-label>
+                <ion-label slot="end">10</ion-label>
+              </ion-range>
+            </div>
+          </div>
+
+          <!-- Atención (Radio Group) -->
+          <div class="control">
+            <div class="label">
+              <ion-label>Atención</ion-label>
+            </div>
+            <ion-radio-group formControlName="atencion">
+              <ion-item>
+                <ion-label>Muy Mala</ion-label>
+                <ion-radio slot="start" value="muy mala"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mala</ion-label>
+                <ion-radio slot="start" value="mala"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Buena</ion-label>
+                <ion-radio slot="start" value="buena"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Excelente</ion-label>
+                <ion-radio slot="start" value="excelente"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </div>
+
+          <!-- Recomendación (Checkbox) -->
+          <div class="control">
+            <ion-item>
+              <ion-label>¿Recomendaría el restaurante?</ion-label>
+              <ion-checkbox slot="end" formControlName="recomendacion"></ion-checkbox>
+            </ion-item>
+          </div>
+
+          <!-- Botón para sacar foto -->
+          <ion-button expand="block"  (click)="tomarFotos()">
+            Tomar Foto
+          </ion-button>
+          <!-- Previsualización de fotos debajo -->
+        <ion-row *ngIf="fotos.length > 0" class="ion-padding-top">
+          <ion-col size="4" *ngFor="let foto of fotos">
+            <ion-img [src]="foto" class="foto-reducida"></ion-img>
+          </ion-col>
+        </ion-row>
+
+        <!-- Botón Enviar -->
+          <ion-button expand="block" type="submit"  [disabled]="formularioEncuesta.invalid">
+            Enviar
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

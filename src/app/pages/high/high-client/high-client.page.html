@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+
+    <!-- agrandar  el texto de aca-->
+    <ion-title class="ion-text-center">Registrarse</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="escanearQR()">
+        <ion-icon slot="icon-only" name="qr-code-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registrarse</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <section id="cart-section" [formGroup]="formularioAlta">
+    <div class="container">
+      <div class="row">
+        <div class="cart cart2">
+          <div style="z-index: 1" class="column">
+            <div class="anonimo-checkbox">
+              <ion-checkbox formControlName="esAnonimo" (ionChange)="toggleAnonimo()"></ion-checkbox>
+              <ion-label>¿Sos anónimo?</ion-label>
+            </div>
+            <div class="log-in-area column">
+              <label class="column">
+                Nombre
+                <input type="text" formControlName="nombre" id="nombre" />
+              </label>
+
+              <label class="column" *ngIf="!formularioAlta.get('esAnonimo')?.value">
+                Apellido
+                <input type="text" formControlName="apellido" id="apellido" />
+              </label>
+
+              <label class="column">
+                Correo electrónico
+                <input type="email" formControlName="email" id="email" />
+              </label>
+              <label class="column">
+                Contraseña
+                <input
+                  type="password"
+                  formControlName="password"
+                  id="password"
+                />
+              </label>
+
+              <label class="column" *ngIf="!formularioAlta.get('esAnonimo')?.value">
+                DNI
+                <input type="text" formControlName="dni" id="dni" />
+              </label>
+
+
+              <div class="form-group column">
+                <label for="foto">Foto</label>
+                <input
+                  id="foto"
+                  type="file"
+                  (change)="onFileSelected($event)"
+                />
+              </div>
+            </div>
+
+            <div class="button-area column">
+              <button
+                (click)="handleRegister()"
+                [disabled]="formularioAlta.invalid || !selectedFile"
+              >
+                Registrarse
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ion-content>

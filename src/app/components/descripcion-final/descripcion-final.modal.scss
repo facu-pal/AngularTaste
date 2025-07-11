@@ -1,0 +1,256 @@
+:host {
+  --ion-color-primary: #1d2f41;
+  --ion-color-secondary: #4a8bfc;
+  --fondo-card: #1d2f41;
+  --color-texto: #ffffff;
+  --color-texto-secundario: rgba(255, 255, 255, 0.8);
+  --color-excelente: #2dd36f;
+  --color-muy-bueno: #48d0b0;
+  --color-bueno: #ffc409;
+  --color-regular: #ff6b6b;
+  --color-mala: #eb445a;
+}
+
+/* Estilos generales */
+ion-content {
+  --background: #000000;
+  --color: var(--color-texto);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+}
+
+/* Header */
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    --color: var(--color-texto);
+    
+    ion-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--color-texto);
+    }
+  }
+}
+
+/* Icono cerrar */
+ion-icon[name="close-outline"] {
+  color: var(--color-texto);
+  font-size: 1.5rem;
+}
+
+/* Contenedor principal */
+.pedido-container {
+  max-width: 600px;
+  
+}
+
+/* Encabezado del pedido */
+.pedido-header {
+  text-align: center;
+  
+  color: var(--color-texto);
+
+  h2 {
+    color: var(--color-texto);
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--color-texto-secundario);
+    margin-top: 4px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tarjeta de detalles */
+.pedido-detail-card {
+  background: var(--fondo-card);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 24px;
+}
+
+/* Lista de productos */
+.productos-list {
+  background: transparent;
+  margin-bottom: 16px;
+
+  .producto-item {
+    --background: transparent;
+    --color: var(--color-texto);
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --border-radius: 8px;
+    margin-bottom: 12px;
+    --background-activated: rgba(255, 255, 255, 0.1);
+    --background-hover: rgba(255, 255, 255, 0.1);
+
+    .producto-info {
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 4px;
+        color: var(--color-texto);
+      }
+
+      .precio-unitario {
+        font-size: 0.9rem;
+        color: var(--color-texto-secundario);
+        display: block;
+      }
+
+      .estado-producto {
+        font-size: 0.8rem;
+        color: var(--color-texto-secundario);
+        display: block;
+      }
+    }
+
+    .producto-precios {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .cantidad {
+        font-size: 0.9rem;
+        color: var(--color-texto-secundario);
+      }
+
+      .subtotal {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--color-texto);
+      }
+    }
+  }
+}
+
+/* Sección de resumen */
+.resumen-section {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 16px;
+
+  .resumen-item {
+    --background: transparent;
+    --color: var(--color-texto);
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --min-height: 36px;
+    
+    ion-label {
+      color: var(--color-texto);
+      font-size: 0.95rem;
+      
+      &[slot="end"] {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .total-item {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 8px;
+    padding-top: 8px;
+    
+    ion-label {
+      &:first-child {
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+      
+      &:last-child {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+    }
+    strong {
+        font-size: 1.6rem !important;
+    }
+  }
+
+}
+
+/* Contenedor de botones */
+.acciones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+
+  ion-button {
+    margin: 0;
+    height: 48px;
+    width: 328px;
+    font-weight: 500;
+    font-size: 1.6rem;
+    border-radius: 30px; ;
+    
+    background-color:#1d2f41 !important;
+    color: white !important;
+    ion-icon {
+      font-size: 1.5rem;
+      color: white;
+    }
+  }
+}
+
+/* Clases para evaluación de propina */
+.excelente {
+  color: var(--color-excelente);
+  font-weight: 600;
+}
+
+.muy-bueno {
+  color: var(--color-muy-bueno);
+  font-weight: 600;
+}
+
+.bueno {
+  color: var(--color-bueno);
+  font-weight: 600;
+}
+
+.regular {
+  color: var(--color-regular);
+  font-weight: 600;
+}
+
+.mala {
+  color: var(--color-mala);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .producto-item {
+    --padding-start: 12px !important;
+    --padding-end: 12px !important;
+    
+    .producto-info h3 {
+      font-size: 1rem !important;
+    }
+  }
+  
+  .pedido-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .resumen-section {
+    padding: 8px;
+    
+    .resumen-item {
+      --min-height: 32px;
+      
+      ion-label {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

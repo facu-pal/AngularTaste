@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+ion-toolbar {
+  --background: #1d2f41 !important;
+  --color: #ffffff;
+  
+  ion-title {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 48px; /* Espacio para los botones laterales */
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 56px); /* Resta la altura del header */
+  padding: 0 16px;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-grande {
+  flex-grow: 3;
+  font-size: 2.5rem;
+  --background: #1d2f41 !important;
+  --color: #ffffff;
+  text-transform: uppercase;
+  
+  &.espera-button {
+    .button-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .espera-icon {
+      font-size: 18rem; 
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+  }
+}
+
+.btn-chico {
+  flex-grow: 1;
+  font-size: 1.8rem !important;
+  --background: #1d2f41 !important;
+  --color: #ffffff;
+  text-transform: uppercase;
+  
+  ion-icon {
+    font-size: 3.4rem !important; 
+    color: #ffffff;
+  }
+}
+
+
+
+  

@@ -1,0 +1,220 @@
+/* Variables de color actualizadas */
+$primary-bg: #1d2f41;
+$input-border: #ccc;
+$focus-color: #4a90e2;
+$button-bg: #000000;  // Cambiado a negro
+$button-hover: #333333;  // Tonos de gris oscuro para el hover
+$disabled-bg: #555555;  // Gris más oscuro para estado deshabilitado
+$text-color: #ffffff;
+$label-color: #ede1e1;
+$input-text-color: #000000;  // Color negro para texto en inputs
+
+/* Fondo general de la app */
+ion-app {
+  background-color: #000000;  // Fondo negro como solicitaste
+}
+
+/* Header con safe area aumentada en 20px */
+ion-header {
+  --ion-safe-area-top: calc(env(safe-area-inset-top) + 20px);  // +20px como solicitaste
+  
+  ion-toolbar {
+    padding-top: var(--ion-safe-area-top);
+    min-height: calc(56px + var(--ion-safe-area-top));
+    --background: #1d2f41;
+    --color: white;
+    
+    ion-title {
+      padding-left: 0;
+      padding-right: 0;
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+    
+    ion-back-button {
+      --color: white;
+    }
+    
+    ion-button {
+      --color: white;
+    }
+  }
+}
+
+/* Ion-content manteniendo su color actual (#f5f5f5) */
+ion-content {
+  --background: #000000;  // Mantenido como estaba
+}
+
+/* Estructura principal */
+#cart-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+  min-height: calc(100vh - 56px - var(--ion-safe-area-top));
+
+  .container {
+    max-width: 600px;
+    width: 100%;
+    background-color: $primary-bg;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-top: 1rem;
+    
+  }
+}
+
+/* Formulario con texto negro en inputs */
+.log-in-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: $label-color;
+    font-size: 0.95rem;
+    
+    input {
+      margin-top: 0.5rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid $input-border;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background-color: white;
+      color: $input-text-color;  // Texto negro en inputs
+      
+      &:focus {
+        border-color: $focus-color;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba($focus-color, 0.2);
+      }
+    }
+  }
+  
+  .form-group {
+    margin-top: 0.5rem;
+    
+    label {
+      margin-bottom: 0.5rem;
+    }
+    
+    input[type="file"] {
+      padding: 0.5rem;
+      color: $label-color;
+    }
+  }
+}
+
+/* Botón negro con mejor contraste */
+.button-area {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  
+  button {
+    padding: 0.85rem 2.5rem;
+    font-size: 2.1rem !important;
+    background-color: $button-bg;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;  // Negrita para mejor legibilidad
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);  // Sombra para mejor contraste
+    
+    &:hover {
+      background-color: $button-hover;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    &:disabled {
+      background-color: $disabled-bg;
+      color: #aaaaaa;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+/* Iconos */
+ion-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.anonimo-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: $label-color;
+  
+  ion-checkbox {
+    margin-right: 0.9rem;
+    --size: 25px;
+    --checkbox-background-checked: #1d2f41;  // Color del header
+    --border-color: #{$label-color};  // Color del borde cuando no está marcado
+    --border-color-checked: #040404;  
+    --checkmark-color: white;  
+  }
+  
+  ion-label {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  #cart-section {
+    padding: 0.5rem;
+    
+    .container {
+      padding: 1rem;
+      border-radius: 0.75rem;
+    }
+  }
+  
+  .log-in-area {
+    gap: 1rem;
+    
+    label {
+      font-size: 1.5rem;
+      
+      input {
+        padding: 0.65rem 0.9rem;
+      }
+    }
+  }
+  
+  .button-area button {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+/* Ajustes específicos para dispositivos con notch */
+@media screen and (min-height: 812px) {  /* iPhone X y superiores */
+  ion-header {
+    --ion-safe-area-top: calc(max(env(safe-area-inset-top), 30px) + 20px);  // +20px también en dispositivos con notch
+  }
+  
+  #cart-section {
+    min-height: calc(100vh - 88px - var(--ion-safe-area-top));
+  }
+}

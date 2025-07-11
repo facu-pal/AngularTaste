@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Clientes Pendientes</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding"  id="main-content">
+  <div *ngFor="let client of clientsList" class="client-card">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ client.nombre }} {{ client.apellido }}</ion-card-title>
+        <ion-card-subtitle>DNI: {{ client.dni }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="card-content">
+          <img
+            [src]="client.foto"
+            alt="Foto del cliente"
+            class="client-photo"
+          />
+
+          <div class="button-group">
+            <ion-button
+              color="success"
+              (click)="changeStatus(client, 'aceptado')"
+              [disabled]="client.estado === 'aceptado'"
+            >
+              {{ client.estado === 'aceptado' ? 'Aceptado' : 'Aceptar' }}
+            </ion-button>
+
+            <ion-button
+              color="danger"
+              (click)="changeStatus(client, 'rechazado')"
+              [disabled]="client.estado === 'rechazado'"
+            >
+              {{ client.estado === 'rechazado' ? 'Rechazado' : 'Rechazar' }}
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

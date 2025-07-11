@@ -1,0 +1,118 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="header-title">Menú</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-menu contentId="main-content" side="start">
+  <ion-header class="custom-header">
+    <ion-toolbar>
+      <ion-title class="header-title">Opciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list lines="none">
+      <ion-item button (click)="navigateTo('home')">
+        <ion-icon slot="start" name="home-outline"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-item>
+      <ion-item button (click)="abrirConsulta()">
+        <ion-icon slot="start" name="chatbubbles-outline"></ion-icon>
+        <ion-label>Consultas</ion-label>
+      </ion-item>
+      <ion-item button (click)="cerrarSesion()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content" [fullscreen]="true">
+    <div *ngIf="loading" class="loading-backdrop">
+    <div class="loading-spinner">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  </div>
+  <div class="category-header">
+    <ion-segment [(ngModel)]="segment" value="comida">
+      <ion-segment-button value="comida">
+        <ion-label class="segment-label">COMIDAS</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="bebida">
+        <ion-label class="segment-label">BEBIDAS</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="postre">
+        <ion-label class="segment-label">POSTRES</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ng-container *ngFor="let tipo of ['comida', 'bebida', 'postre']">
+    <div *ngIf="segment === tipo">
+      <swiper-container 
+        [slidesPerView]="1" 
+        [spaceBetween]="16"
+        class="main-swiper">
+        <swiper-slide *ngFor="let producto of productosFiltrados[tipo]">
+          <ion-card class="product-card">
+            <div class="image-container">
+              <swiper-container 
+                [pagination]="true" 
+                class="image-slider" 
+                nested="true">
+                <swiper-slide *ngFor="let foto of producto.fotos">
+                  <img [src]="foto" class="product-image" onError="this.src='assets/imgs/default-food.jpg'">
+                </swiper-slide>
+              </swiper-container>
+            </div>
+
+            <ion-card-header>
+              <ion-card-title class="product-name">{{producto.nombre}}</ion-card-title>
+              <ion-card-subtitle class="product-detail">{{producto.detalle}}</ion-card-subtitle>
+
+              <div class="info-row">
+                <div>
+                  <span class="time-label">Tiempo: <span class="product-time">{{producto.tiempo}} min</span></span>
+                </div>
+                <div>
+                  <span class="price-label">Precio: <span class="product-price">${{producto.precio}}</span></span>
+                </div>
+              </div>
+            </ion-card-header>
+
+            <ion-card-content>
+              <div class="quantity-controls">
+                <ion-button fill="clear" (click)="decrementarCantidad(producto)" 
+                            [disabled]="!producto.cantidad || producto.cantidad <= 0">
+                  <ion-icon name="remove" slot="icon-only"></ion-icon>
+                </ion-button>
+
+                <div class="quantity-display">{{producto.cantidad || 0}}</div>
+
+                <ion-button fill="clear" (click)="incrementarCantidad(producto)">
+                  <ion-icon name="add" slot="icon-only"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+  </ng-container>
+
+  <div class="detail-section">
+    <div class="summary-info">
+      <div class="max-time">Tiempo estimado: <span>{{calcularTiempoMaximo()}} min</span></div>
+      <div class="total-price">Total: <span>${{calcularTotal()}}</span></div>
+    </div>
+
+    <ion-button class="detail-button" expand="block" (click)="verDetallePedido()">
+      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+      Ver Detalles del Pedido
+    </ion-button>
+  </div>
+</ion-content>

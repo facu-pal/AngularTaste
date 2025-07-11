@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Detalle del Pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-full">
+  <div class="card-wrapper">
+    <ion-card class="full-card">
+      <ion-card-header>
+        <ion-card-title>Mesa {{ pedido.mesa }}</ion-card-title>
+        <ion-card-subtitle>Tiempo estimado: {{ pedido.tiempo }} min</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="content-spacing">
+        <div *ngIf="pedido.cliente" class="detalle-item">
+          <div class="label">👤 Cliente:</div>
+          <div class="valor">{{ pedido.cliente.nombre }}</div>
+        </div>
+
+        <div *ngIf="pedido.comida" class="detalle-item">
+          <div class="label">🍽️ Comida:</div>
+          <div class="valor">{{ pedido.comida.tipo }} (x{{ pedido.comida.cantidad }})</div>
+        </div>
+        <div *ngIf="pedido.postre" class="detalle-item">
+          <div class="label">🍽️ Comida:</div>
+          <div class="valor">{{ pedido.postre.tipo }} (x{{ pedido.postre.cantidad }})</div>
+        </div>
+
+        <div *ngIf="pedido.bebida" class="detalle-item">
+          <div class="label">🥤 Bebida:</div>
+          <div class="valor">{{ pedido.bebida.tipo }} (x{{ pedido.bebida.cantidad }})</div>
+        </div>
+
+        <div *ngIf="pedido.precio" class="detalle-item">
+          <div class="label">💰 Precio:</div>
+          <div class="valor">$ {{ pedido.precio }}</div>
+        </div>
+
+        <div class="detalle-item estado">
+          <div class="label">⏱️ Estado:</div>
+          <div class="valor">{{ pedido.estado }}</div>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" color="tertiary" size="large" (click)="cerrar()">
+      Cerrar
+    </ion-button>
+  </div>
+</ion-content>

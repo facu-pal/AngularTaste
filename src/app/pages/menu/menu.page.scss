@@ -1,0 +1,329 @@
+:host {
+  display: block;
+  height: 100vh;
+  background: #121212;
+  color: white;
+}
+
+/* Header */
+.custom-header {
+  ion-toolbar {
+    --background: #1d2f41;
+    --color: white;
+    --min-height: 80px;
+    padding-top: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    ion-title.header-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    ion-menu-button {
+      --color: white;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+/* Menú lateral */
+ion-menu {
+  --width: 280px;
+  --background: #1d2f41;
+
+  ion-header.custom-header {
+    ion-toolbar {
+      --min-height: 80px;
+      padding-top: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      ion-title.header-title {
+        font-size: 2.3rem !important;
+        font-weight: 500;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  ion-content {
+    --background: #1d2f41;
+    --padding-top: 20px;
+
+    ion-list {
+      background: transparent;
+      padding: 0;
+    }
+
+    ion-item {
+      --background: #1d2f41;
+      --color: white;
+      --padding-start: 20px;
+      --min-height: 56px;
+      --detail-icon-opacity: 1;
+      --detail-icon-color: white;
+
+      &::part(native) {
+        --color: white;
+      }
+
+      ion-icon {
+        color: white !important;
+        font-size: 2.5rem !important;
+        margin-right: 16px;
+      }
+
+      ion-label {
+        font-size: 1.8rem !important;
+        font-weight: 500;
+        color: white;
+      }
+
+      &:hover {
+        --background: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+
+/* Segmento categorías */
+.category-header {
+  padding: 12px;
+
+  ion-segment {
+    --background: #1d2f41;
+    border-radius: 8px;
+
+    ion-segment-button {
+      --color: white;
+      --color-checked: white;
+      --indicator-color: white;
+      --background-checked: #2a3d52;
+      font-weight: 500;
+
+      .segment-label {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+/* Contenedor general */
+.products-container {
+  padding: 16px;
+}
+
+/* Swiper externo (productos) */
+.main-swiper {
+  width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+/* Cards de productos */
+.product-card {
+  background: #1d2f41;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px;
+
+  .image-container {
+    width: 100%;
+    height: 180px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2a3d52;
+
+    /* Swiper interno (fotos del producto) */
+    .image-slider {
+      touch-action: pan-y;
+      width: 100%;
+      height: 100%;
+
+      swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2a3d52;
+
+        img {
+          width: auto;
+          height: 100%;
+          max-width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+
+  ion-card-header {
+    padding: 8px 16px;
+
+    .product-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .product-detail {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 12px;
+    }
+
+    .info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 2px;
+
+      .price-label,
+      .time-label {
+        font-size: 1.8rem;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .product-price,
+      .product-time {
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+
+  ion-card-content {
+    padding: 6px 8px;
+    margin-top: auto;
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      //margin-top: 2px;
+
+      .quantity-display {
+        min-width: 30px;
+        text-align: center;
+        font-size: 1.9rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      ion-button {
+        --padding-start: 0;
+        --padding-end: 0;
+        --color: white;
+        --background-hover: rgba(255, 255, 255, 0.1);
+
+        ion-icon {
+          font-size: 1.6rem;
+        }
+
+        &[disabled] {
+          --color: rgba(255, 255, 255, 0.3);
+        }
+      }
+    }
+  }
+}
+
+/* Botón detalle de pedido */
+.detail-section {
+ padding-right: 4px;
+ padding-left: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .summary-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px;
+
+    .total-price,
+    .max-time {
+      font-size: 1.8rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        color: white;
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .detail-button {
+    --background: #1d2f41;
+    --color: white;
+    --border-radius: 12px;
+    --border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    margin: 0;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    height: 50px;
+    font-size: 1.2rem;
+
+    ion-icon {
+      margin-right: 8px;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    &:hover {
+      --background: #2a3d52;
+    }
+  }
+}
+
+/* Spinner de carga */
+.loading-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  
+  ion-spinner {
+    width: 60px;
+    height: 60px;
+    --color: #00e676;
+  }
+}
+
+.loading-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,66 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="header-title">Mozo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-menu contentId="main-content" side="start">
+  <ion-header class="custom-header">
+    <ion-toolbar>
+      <ion-title class="header-title">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list lines="none">
+      <ion-item button (click)="abrirConsulta()">
+        <ion-icon slot="start" name="chatbubbles-outline"></ion-icon>
+        <ion-label>Consultas</ion-label>
+      </ion-item>
+      <ion-item button (click)="closeSession()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content" [fullscreen]="true">
+  <div class="pedidos-container">
+    <ion-card *ngFor="let pedido of pedidos" class="pedido-card" [class]="'estado-' + pedido.estado.replace(' ', '-')">
+      <ion-card-header class="card-header">
+        <div class="ids-container">
+          <ion-card-title class="pedido-id">Pedido: {{(pedido.idPedido)}}</ion-card-title>
+          <ion-card-title class="mesa-id">Mesa: {{pedido.idMesa || 'N/A'}}</ion-card-title>
+        </div>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="pedido-info">
+          <p><strong>Estado:</strong> {{pedido.estado}}</p>
+          <p><strong>Total:</strong> ${{pedido.precioTotal | number:'1.2-2'}}</p>
+          <p><strong>Cliente:</strong> {{pedido.emailUsuario || 'No especificado'}}</p>
+        </div>
+
+        <div class="pedido-actions">
+          <ion-button fill="solid" class="header-button" (click)="verInfo(pedido)">
+            <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+            Detalle
+          </ion-button>
+
+          <ion-button fill="solid" class="header-button" (click)="cambiarEstado(pedido)"  *ngIf="pedido.estado !== 'en preparación'">
+            {{getBotonTexto(pedido.estado)}}
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+        <div *ngIf="pedidos.length === 0" class="no-pedidos">
+      <ion-icon name="receipt-outline"></ion-icon>
+      <p>No hay pedidos pendientes</p>
+    </div>
+  </div>
+  
+  
+</ion-content>

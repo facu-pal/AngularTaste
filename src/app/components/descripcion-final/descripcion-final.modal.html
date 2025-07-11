@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary" style="padding-top: 40px;">
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrar()" >
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title  >Confirmación de Pago</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="pedido-container">
+    <div class="pedido-header">
+      <ion-text color="dark">
+        <h2>Pedido #{{pedido.idPedido}}</h2>
+      </ion-text>
+      <ion-text color="medium" *ngIf="pedido.idMesa">
+        <p>Mesa: {{pedido.idMesa}}</p>
+      </ion-text>
+    </div>
+
+    <div class="pedido-detail-card">
+      <ion-list class="productos-list" lines="none">
+        <ion-item *ngFor="let producto of pedido.productos" class="producto-item">
+          <ion-label class="producto-info">
+            <div class="producto-header">
+              <h3>{{producto.nombre}}</h3>
+            </div>
+            <ion-text class="precio-unitario">${{producto.precio | number:'1.2-2'}} c/u</ion-text>
+          </ion-label>
+          
+          <div slot="end" class="producto-precios">
+            <ion-text class="cantidad">x{{producto.cantidad}}</ion-text>
+            <ion-text class="subtotal">${{producto.precio * producto.cantidad | number:'1.2-2'}}</ion-text>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <div class="resumen-section">
+        <ion-item lines="none" class="resumen-item">
+          <ion-label>Subtotal:</ion-label>
+          <ion-label slot="end">${{pedido.precioTotal | number:'1.2-2'}}</ion-label>
+        </ion-item>
+        
+        <ion-item lines="none" class="resumen-item">
+          <ion-label>Propina ({{porcentajePropina}}%):</ion-label>
+          <ion-label slot="end">
+            ${{ (pedido.precioTotal * porcentajePropina / 100) | number:'1.2-2' }}
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none" class="resumen-item">
+          <ion-label>Evaluación propina:</ion-label>
+          <ion-label slot="end" [class]="getClaseEvaluacion()">
+            {{getMensajePropina()}}
+          </ion-label>
+        </ion-item>
+        
+        <ion-item lines="none" class="resumen-item total-item">
+          <ion-label><strong>Total final:</strong></ion-label>
+          <ion-label slot="end" class="total-precio">
+            <strong>${{ precioFinal | number:'1.2-2' }}</strong>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+    
+    <div class="acciones-container">
+      <ion-button expand="block" (click)="pagar()" class="pagar-button" >
+        <ion-icon slot="start" name="card-outline"></ion-icon>
+        Confirmar Pago
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

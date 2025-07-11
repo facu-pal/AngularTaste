@@ -1,0 +1,55 @@
+<ion-menu side="start" menuId="maitreMenu" contentId="main-content" swipeGesture="true">
+    <ion-header class="custom-header">
+    <ion-toolbar>
+      <ion-title class="header-title">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="cerrarSesion()" class="menu-item">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header id="main-content">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="maitreMenu">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Lista de espera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="listaEspera.length === 0" class="empty-state">
+    <ion-icon name="people-outline" class="empty-icon"></ion-icon>
+    <p>No hay clientes en la lista de espera</p>
+  </div>
+
+  <div *ngFor="let cliente of listaEspera" class="client-card">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ cliente.clienteInfo.nombre }} {{ cliente.clienteInfo.apellido }}</ion-card-title>
+        <ion-card-subtitle>Pedido: {{ cliente.idPedido }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="card-content">
+          <ion-button style="margin-bottom: 10px;" expand="block" (click)="mostrarSelectorMesas(cliente)" [disabled]="mesasDisponibles.length === 0">
+            {{ cliente.mesaSeleccionada ? 'Mesa ' + getNumeroMesa(cliente.mesaSeleccionada) : 'Seleccionar mesa' }}
+          </ion-button>
+
+          <ion-button expand="block" class="btn-asignar" (click)="asignarMesa(cliente)"
+            [disabled]="!cliente.mesaSeleccionada || mesasDisponibles.length === 0">
+            ASIGNAR MESA
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

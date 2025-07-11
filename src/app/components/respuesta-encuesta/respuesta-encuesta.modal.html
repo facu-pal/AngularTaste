@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrar()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Respuesta de Encuesta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="scroll-container">
+  <!-- Gráfico 1 -->
+  <div class="snap-section">
+    <ion-card class="grafico-card">
+      <ion-card-header>
+        <ion-card-title>Calidad de la Comida</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #comidaChart></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Gráfico 2 -->
+  <div class="snap-section">
+    <ion-card class="grafico-card">
+      <ion-card-header>
+        <ion-card-title>Atención</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #atencionChart></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Gráfico 3 -->
+  <div class="snap-section">
+    <ion-card class="grafico-card">
+      <ion-card-header>
+        <ion-card-title>Recomendación</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #recomendacionChart></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Comentarios y fotos -->
+  <div class="snap-section">
+    <ion-card class="comentarios-card">
+      <ion-card-header>
+        <ion-card-title class="ion-card-md">Comentarios y Fotos</ion-card-title>
+        <ion-card-subtitle>Encuesta {{indiceActual + 1}} de {{encuestas.length}}</ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <!-- Navegación -->
+        <div class="navegacion-encuestas">
+          <ion-button fill="clear" (click)="anterior()" [disabled]="indiceActual === 0">
+            <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+            Anterior
+          </ion-button>
+          <ion-button fill="clear" (click)="siguiente()" [disabled]="indiceActual === encuestas.length - 1">
+            Siguiente
+            <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <!-- Comentario -->
+        <div class="comentario-container">
+          <ion-textarea 
+            [value]="encuestaActual?.comentarios" 
+            readonly 
+            autoGrow
+            class="custom-textarea">
+          </ion-textarea>
+        </div>
+
+        <!-- Fotos -->
+        <div class="fotos-container" *ngIf="tieneFotos">
+          <ion-segment [(ngModel)]="fotoSeleccionada" class="segment-fotos">
+            <ion-segment-button *ngFor="let foto of encuestaActual.imagenes; let i = index" [value]="i">
+              <ion-icon name="camera-outline"></ion-icon>
+              <span class="numero-foto">{{i + 1}}</span>
+            </ion-segment-button>
+          </ion-segment>
+
+          <div class="imagen-preview-container">
+            <div class="imagen-preview">
+              <ion-img 
+                [src]="encuestaActual.imagenes[fotoSeleccionada]" 
+                (ionError)="handleImageError($event)"
+                [class.img-loaded]="encuestaActual.imagenes[fotoSeleccionada]">
+              </ion-img>
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

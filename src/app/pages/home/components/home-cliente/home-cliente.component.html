@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title style="padding-top: 25px;">AngularTaste</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <div class="container">
+    <ion-button expand="block" size="large" class="btn-grande qr-button" (click)="escanearQR()">
+      <div class="button-content">
+        <ion-icon name="qr-code" class="qr-icon"></ion-icon>
+        <span>Escanear QR</span>
+      </div>
+    </ion-button>
+
+    <ion-button expand="block" size="default" class="btn-chico" (click)="cerrarSesion()">
+      <ion-icon slot="start" name="exit-outline"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+
+    <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="primary" (click)="irListaEspera()">
+        <ion-icon name="list-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+  </div>
+</ion-content>

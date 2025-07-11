@@ -1,0 +1,249 @@
+/* Estilos base */
+:host {
+  display: block;
+  height: 100vh;
+  background: #121212;
+}
+
+/* Menú lateral - Mismo color que header */
+ion-menu {
+  --width: 280px;
+  --background: #1d2f41;
+  
+  .menu-content {
+    --background: #1d2f41;
+  }
+  
+  ion-list {
+    background: transparent;
+    padding: 0;
+  }
+
+    ion-label.menu-title {
+    display: block;
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: white;
+    padding: 16px 0;
+  }
+  
+  ion-item.menu-item {
+    --background: #1d2f41; /* Color de fondo del item */
+    --color: white; /* Color del texto */
+    --padding-start: 20px;
+    --min-height: 56px;
+    --border-width: 0;
+    --detail-icon-color: white;
+    
+    ion-icon {
+      color: white;
+      font-size: 1.7rem;
+      margin-right: 16px;
+    }
+    
+    ion-label {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+    
+    
+    &:active, &:hover {
+      --background: rgba(255, 255, 255, 0.1); /* Efecto al presionar */
+    }
+  }
+}
+
+/* Header */
+ion-header {
+  ion-toolbar {
+    --background: #1d2f41;
+    --color: white;
+    padding-top: 30px;
+    
+    ion-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      padding-bottom: 20px;
+      padding-top: 25px;
+    }
+    
+    ion-menu-button {
+      --color: white;
+    }
+  }
+}
+
+/* Contenido principal */
+ion-content {
+  --background: #121212;
+  --color: white;
+  --padding-top: 10px;
+}
+
+/* Estado vacío */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  padding-top: 40px;
+  
+  .empty-icon {
+    font-size: 10rem;
+    color: rgb(255, 255, 255);
+    margin-bottom: 16px;
+  }
+  
+  p {
+    font-size: 4.2rem;
+    color: rgb(255, 255, 255);
+    margin: 0;
+  }
+}
+
+/* Cards de pedidos */
+.pedido-card {
+  margin-bottom: 20px;
+  padding: 0 10px;
+
+  ion-card {
+    background: #1d2f41;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  ion-card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    
+    ion-card-title {
+      font-size: 2.1rem;
+      color: white;
+      margin-top: 4px;
+    }
+    
+    ion-card-subtitle {
+      color: rgb(255, 255, 255);
+      font-size: 2.9rem;
+    }
+  }
+
+  ion-card-content {
+    padding: 16px;
+    background: #1d2f41; /* Fondo del contenido de la card */
+    
+    ion-list {
+      background: transparent;
+      padding: 0;
+      
+      &.list-md {
+        background: transparent;
+      }
+    }
+  }
+
+  .producto-item {
+    --background: #1d2f41;
+    --color: white;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    --min-height: 48px;
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    ion-label {
+      font-size: 1.2rem;
+      color: white;
+    }
+    
+    .estado-badge {
+      font-size: 1.3rem;
+      font-weight: 600;
+      padding: 10px 12px;
+      border-radius: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      
+
+    }
+
+.estado-button {
+  --border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 10px;
+      font-size: 1.5rem;
+
+  &[disabled] {
+    opacity: 0.9;
+    --background: var(--ion-color-medium);
+    --color: var(--ion-color-medium-contrast);
+  }
+}
+  }
+
+  .btn-entregar {
+    --background: #4CAF50;
+    --color: rgb(0, 0, 0);
+    --border-radius: 8px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 16px;
+    font-size: 1.5rem;
+    
+    &[disabled] {
+      --background: rgba(76, 175, 80, 0.5);
+      --color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  
+  ion-spinner {
+    margin-bottom: 16px;
+    color: #1d2f41;
+  }
+  
+  p {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.estado-button {
+  --border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 120px;
+  
+  &[disabled] {
+    opacity: 1; // Mantener visible pero deshabilitado
+  }
+}
+
+/* Estilos para los diferentes estados */
+.estado-button[color="success"] {
+  --background: var(--ion-color-success);
+  --background-activated: var(--ion-color-success-shade);
+  --background-hover: var(--ion-color-success-tint);
+}
+
+.estado-button[color="warning"] {
+  --background: var(--ion-color-warning);
+  --background-activated: var(--ion-color-warning-shade);
+  --background-hover: var(--ion-color-warning-tint);
+}

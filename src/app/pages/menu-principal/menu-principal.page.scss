@@ -1,0 +1,220 @@
+/* Estilos generales */
+:host {
+  display: block;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+/* Header personalizado */
+.custom-header {
+  ion-toolbar {
+    --background: #1d2f41;
+    --color: white;
+    --min-height: 64px;
+    padding-top: 30px;
+
+    ion-title {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    ion-menu-button {
+      --color: white;
+    }
+  }
+}
+
+/* Menú lateral */
+ion-menu {
+  --width: 280px;
+  --background: #1d2f41;
+
+  ion-content {
+    --background: #1d2f41;
+    --color: white;
+
+    ion-list {
+      background: transparent;
+      padding-top: 20px;
+    }
+
+    ion-item {
+      --background: transparent;
+      --color: white;
+      --padding-start: 20px;
+
+      ion-icon {
+        color: white;
+        margin-right: 16px;
+        font-size: 2.4rem;
+      }
+
+      ion-label {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+/* Contenedor principal */
+.container {
+  padding: 16px 16px 24px;
+  height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Tarjeta de estado */
+.status-card {
+  margin-bottom: 20px;
+
+  ion-card {
+    background: white;
+    margin: 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    ion-card-header {
+      padding-bottom: 8px;
+
+      ion-card-title {
+        font-size: 1.2rem;
+        color: #1d2f41;
+        font-weight: 600;
+      }
+
+      ion-card-subtitle {
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+
+    ion-card-content {
+      padding-top: 0;
+
+      .status-info {
+        p {
+          margin: 8px 0;
+          font-size: 0.95rem;
+          color: #444;
+
+          strong {
+            color: #1d2f41;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Badge de estado */
+ion-badge {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: inline-block;
+
+  /* Colores para cada estado */
+  &.status-pedido-hecho {
+    --background: var(--ion-color-warning);
+  }
+
+  &.status-en-preparación {
+    --background: var(--ion-color-primary);
+  }
+
+  &.status-listo-para-servir {
+    --background: var(--ion-color-success);
+  }
+
+  &.status-servido {
+    --background: var(--ion-color-tertiary);
+  }
+
+  &.status-pedir-la-cuenta {
+    --background: var(--ion-color-medium);
+  }
+
+  &.status-cuenta-entregada {
+    --background: var(--ion-color-dark);
+  }
+}
+
+/* Contenedor de botones */
+.action-buttons {
+  flex: 1;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px;
+  padding-bottom: 16px;
+  overflow-y: auto;
+
+  /* Estilo base para todos los botones */
+  ion-button {
+    --border-radius: 8px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    flex: 1;
+    height: auto;
+    min-height: 60px;
+    font-weight: 500;
+    text-transform: none;
+    font-size: 2.3rem !important;
+
+    ion-icon {
+      font-size: 3.4rem !important;
+      margin-right: 8px;
+    }
+  }
+
+  /* Todos los botones con el mismo color */
+  .action-button,
+  .serve-button,
+  .bill-button,
+  .pay-button,
+  .survey-button,
+  .game-button {
+    --background: #1d2f41;
+    --color: white;
+    --background-activated: #2a3d52;
+    --background-hover: #2a3d52;
+  }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 600px) {
+  .container {
+    padding: 12px 12px 20px;
+  }
+
+  .action-buttons {
+    gap: 8px;
+    padding-bottom: 12px;
+
+    ion-button {
+      min-height: 55px;
+      font-size: 0.95rem;
+
+      ion-icon {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .status-card {
+    ion-card {
+      ion-card-header {
+        ion-card-title {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}

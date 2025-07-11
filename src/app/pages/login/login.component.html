@@ -1,0 +1,139 @@
+<section id="login">
+  <div id="circle">
+    <div style="z-index: 1" id="form">
+      <div class="log-in-area" style="padding-top: 60px;">
+        <img
+          src="assets/icon/favicon.png"
+          alt="Logo"
+          class="logo"
+          width="150"
+          height="150"
+          loading="lazy"
+        />
+        <h2 id="title">Ingreso</h2>
+
+        <div class="form__group">
+          <label class="form__label" for="email" id="label__email">
+            Correo electrónico
+          </label>
+          <input
+            name="email"
+            type="email"
+            inputmode="email"
+            [(ngModel)]="user"
+            class="form__input"
+            autocomplete="email"
+          />
+          <label class="form__label" for="password" id="label__password">
+            Contraseña
+          </label>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            class="form__input"
+            autocomplete="current-password"
+          />
+        </div>
+      </div>
+
+      <ion-segment id="segments" value="customer">
+        <ion-segment-button value="customer" content-id="customer">
+          <ion-label>Trabajador</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="worker" content-id="worker">
+          <ion-label>Clientes</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="owner" content-id="owner">
+          <ion-label>Dueños</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-segment-view>
+        <ion-segment-content id="customer">
+          <div class="segment-buttons">
+            <ion-button
+              shape="round"
+              color="primary"
+              (click)="autoCompleteLogin('mozo@angulartaste.com', '111111')"
+            >
+              
+              Mozo
+            </ion-button>
+            <ion-button
+              shape="round"
+              color="primary"
+              (click)="autoCompleteLogin('maitre@angulartaste.com', '111111')"
+            >
+              
+              Maitre
+            </ion-button>
+            <ion-button
+              shape="round"
+              color="secondary"
+              (click)="autoCompleteLogin('cocinero@angulartaste.com', '111111')"
+            >
+             
+              Cocinero
+            </ion-button>
+            <ion-button
+              shape="round"
+              color="secondary"
+              (click)="autoCompleteLogin('barista@angulartaste.com', '111111')"
+            >
+             
+              Barista
+            </ion-button>
+          </div>
+        </ion-segment-content>
+        
+        <ion-segment-content id="worker">
+          <div class="segment-buttons">
+            <ion-button
+              shape="round"
+              color="warning"
+              (click)="autoCompleteLogin('cliente@cliente.com', '111111')"
+            >
+              
+              Cliente #1
+            </ion-button>
+            <ion-button
+              shape="round"
+              color="warning"
+              (click)="autoCompleteLogin('anonimo@anonimo.com', '111111')"
+            >
+              
+              Cliente anónimo
+            </ion-button>
+          </div>
+        </ion-segment-content>
+        
+        <ion-segment-content id="owner">
+          <div class="segment-buttons">
+            <ion-button
+              shape="round"
+              color="tertiary"
+              (click)="autoCompleteLogin('duenio@angulartaste.com', '111111')"
+            >
+              
+              Dueño
+            </ion-button>
+            <ion-button
+              shape="round"
+              color="tertiary"
+              (click)="autoCompleteLogin('Supervisor@angulartaste.com', '111111')"
+            >
+              
+              Supervisor
+            </ion-button>
+          </div>
+        </ion-segment-content>
+      </ion-segment-view>
+
+      <div class="button__area">
+        <button id="btn__ingresar" (click)="login()">Ingresar</button>
+        <button id="btn__registrarse" (click)="register()">Registrarse</button>
+      </div>
+    </div>
+  </div>
+</section>

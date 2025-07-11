@@ -1,0 +1,290 @@
+/* Estilos generales */
+:host {
+  display: block;
+  height: 100%;
+  background: var(--ion-background-color, #f5f5f5);
+}
+
+/* Header styles */
+.custom-header {
+  ion-toolbar {
+    --background: #1d2f41;
+    --color: white;
+    --min-height: 64px;
+    padding-top: 30px;
+
+    ion-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+
+    ion-menu-button {
+      color: white;
+    }
+  }
+}
+
+/* Botones con estilo del header */
+.header-button {
+  --background: #1d2f41;
+  --color: white;
+  --background-activated: #2a3d52;
+  --background-hover: #2a3d52;
+  --border-radius: 8px;
+  font-weight: 500;
+  margin: 0;
+    font-size: 1.5rem;
+
+}
+
+/* Resto de estilos */
+ion-menu {
+  --width: 280px;
+  --background: #1d2f41;
+
+  ion-content {
+    --background: #1d2f41;
+    --color: white;
+
+    ion-list {
+      background: transparent;
+      padding-top: 20px;
+    }
+    ion-label {
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    ion-item {
+      --background: transparent;
+      --color: white;
+
+      ion-icon {
+        color: white;
+        margin-right: 16px;
+        font-size: 1.7rem;
+      }
+    }
+  }
+}
+
+.pedidos-container {
+  padding: 12px;
+  display: grid;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pedido-card {
+  margin: 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .card-header {
+    padding-bottom: 0;
+
+    .ids-container {
+      display: flex;
+      justify-content: space-between;
+      
+    }
+
+    .pedido-id, .mesa-id {
+      font-size: 1.7rem;
+      font-weight: 600;
+    }
+  }
+}
+
+/* Clases de estado */
+.estado-pedido-hecho {
+  border-left: 6px solid var(--ion-color-warning);
+}
+
+.estado-en-preparación {
+  border-left: 6px solid var(--ion-color-primary);
+}
+
+.estado-listo-para-servir {
+  border-left: 6px solid var(--ion-color-success);
+}
+
+.estado-servido {
+  border-left: 6px solid var(--ion-color-tertiary);
+}
+
+.estado-pedir-la-cuenta {
+  border-left: 6px solid var(--ion-color-medium);
+}
+
+.estado-cuenta-entregada {
+  border-left: 6px solid var(--ion-color-success);
+}
+
+.estado-pagado {
+  border-left: 6px solid var(--ion-color-danger);
+}
+
+.estado-pago-confirmado {
+  border-left: 6px solid var(--ion-color-dark);
+}
+
+.pedido-info {
+  margin-bottom: 16px;
+  
+  p {
+    margin: 4px 0;
+    font-size: 1.5rem;
+    color: var(--ion-color-medium);
+  }
+}
+
+.pedido-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  .pedidos-container {
+    padding: 8px;
+    gap: 12px;
+  }
+
+  .pedido-actions {
+    flex-direction: column;
+  }
+}
+
+.no-pedidos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 10rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+    color: #ffffff !important;
+  }
+
+  p {
+    font-size: 3.1rem;
+    margin: 0;
+    color: #ffffff;
+  }
+}
+
+@media (min-width: 380px) {
+.no-pedidos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 10rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+    color: #ffffff !important;
+  }
+
+  p {
+    font-size: 6.1rem;
+    margin: 0;
+    color: #ffffff;
+  }
+}
+
+
+.pedido-card {
+  margin: 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .card-header {
+    padding-bottom: 0;
+
+    .ids-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .pedido-id, .mesa-id {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+  }
+}
+
+
+.pedido-info {
+  margin-bottom: 16px;
+  
+  p {
+    margin: 4px 0;
+    font-size: 2rem;
+    color: #ffffff;
+  }
+}
+
+.header-button {
+  --background: #1d2f41;
+  --color: white;
+  --background-activated: #2a3d52;
+  --background-hover: #2a3d52;
+  --border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.9rem;
+  margin: 0;
+}
+
+.custom-header {
+  ion-toolbar {
+    --background: #1d2f41;
+    --color: white;
+    --min-height: 64px;
+    padding-top: 30px;
+
+    ion-title {
+      font-size: 2.1rem;
+      font-weight: 500;
+    }
+
+    ion-menu-button {
+      color: white;
+      font-size: 2.1rem;
+    }
+  }
+}
+
+
+ion-menu {
+  
+  ion-content {
+    --background: #1d2f41;
+    --color: white;
+
+
+    ion-item {
+      ion-icon {
+        color: white;
+        margin-right: 16px;
+        font-size: 2.3rem;
+      }
+    }
+    ion-label {
+      font-size: 2.3rem;
+    }
+  }
+}
+
+}

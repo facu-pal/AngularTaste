@@ -1,0 +1,26 @@
+<ion-header class="custom-header">
+  <ion-toolbar>
+    <ion-buttons slot="start" style="padding-top: 25px; padding-bottom: 5px;">
+      <ion-button (click)="volverAHome()">
+        <ion-icon slot="icon-only" name="arrow-back-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="header-title" style="padding-top: 25px; padding-bottom: 5px;">AngularTaste</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <div class="container">
+    <ion-button expand="block" size="large" class="btn-grande espera-button" (click)="entrarListaEspera()">
+      <div class="button-content">
+        <ion-icon name="hourglass-outline" class="espera-icon"></ion-icon>
+        <span>ENTRAR A LISTA DE ESPERA</span>
+      </div>
+    </ion-button>
+
+    <ion-button expand="block" size="default" class="btn-chico" (click)="verEncuesta()" style="padding-bottom: 10px;">
+      <ion-icon slot="start" name="stats-chart-outline"></ion-icon>
+      VER ENCUESTA
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,82 @@
+ion-header {
+  --background: #1d2f41;
+  color: #fff;
+}
+ion-toolbar {
+  --background: #1d2f41;
+  color: #fff;
+  padding-top: 30px !important;
+
+  ion-title {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+.client-card {
+  margin-bottom: 16px;
+  ion-card {
+    background-color: #1d2f41;
+    min-height: 250px; 
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @media (min-width: 576px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .client-photo {
+    width: 140px; 
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    ion-button {
+      --border-radius: 20px;
+      --padding-top: 16px;
+      --padding-bottom: 16px;
+      --padding-start: 24px;
+      --padding-end: 24px;
+      font-size: 2rem; 
+      font-weight: bold; 
+    }
+  }
+
+  ion-card-title,ion-card-subtitle {
+    font-size: 1.7rem !important;
+    color: #fff;
+  } 
+}
+
+.button-group {
+  ion-button[disabled] {
+    opacity: 0.6;  // Hace que el botón se vea más "apagado"
+    filter: grayscale(80%);  // Opcional: Le quita un poco de color
+    
+  }
+
+  ion-button[color="success"][disabled] {
+    --background: #2dd36f80;  // Verde con transparencia
+  }
+
+  ion-button[color="danger"][disabled] {
+    --background: #eb445a80;  // Rojo con transparencia
+  }
+}
